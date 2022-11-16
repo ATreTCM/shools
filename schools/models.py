@@ -1,7 +1,7 @@
 
 from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import backref, relationship, declarative_base
+
 
 Base = declarative_base()
 
@@ -29,9 +29,11 @@ class Lesson(Base):
     __tablename__ = "lesson"
     
     id = Column(Integer, primary_key=True)
-    hall_id = Column(Integer(), ForeignKey("Hall.id", ondelete="CASCADE"))
-    coach_id = Column(Integer(), ForeignKey("User.id", ondelete="CASCADE"))
-
-
-
-
+    hall_id = Column(Integer(), ForeignKey("Hall.id")
+    coach_id = Column(Integer(), ForeignKey("User.id")
+    hall = relationship(
+        Hall, backref=backref("halls", uselist=True, cascade="delete,all")
+    )
+    coach = relationship(
+        User, backref=backref("coachs", uselist=True, cascade="delete,all")
+    )
