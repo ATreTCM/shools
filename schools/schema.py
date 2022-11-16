@@ -1,4 +1,4 @@
-
+If
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyConnectionField, SQLAlchemyObjectType
@@ -23,11 +23,11 @@ class LessonSchema(SQLAlchemyObjectType):
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
     
-    all_users = SQLAlchemyConnectionField(UserSchema.connection)
+    allUsers = SQLAlchemyConnectionField(UserSchema.connection)
     
-    all_halls = SQLAlchemyConnectionField(HallSchema.connection)
+    allHalls = SQLAlchemyConnectionField(HallSchema.connection)
     
-    all_lessons = SQLAlchemyConnectionField(LessonSchema.connection)
+    allLessons = SQLAlchemyConnectionField(LessonSchema.connection)
        
 
     
