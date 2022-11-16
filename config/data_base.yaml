@@ -1,8 +1,13 @@
+site_name: TestTask
+
 postgres:
-  database: School
-  user: atret
-  password: ghbdtn
+  database: SchoolBD
+  user: atretik
+  password: fkbcf2018
   host: localhost
   port: 5432
   minsize: 1
   maxsize: 5
+
+host: 127.0.0.1
+port: 8080
