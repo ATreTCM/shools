@@ -1,9 +1,10 @@
 
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import backref, relationship, declarative_base
-
+from init_bd import db_session
 
 Base = declarative_base()
+Base.query = db_session.query_property()
 
 __all__ = ('Hall', 'User', 'Lesson', )
 
