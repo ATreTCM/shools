@@ -65,6 +65,7 @@ type Query {
 
 from aiohttp import web
 from aiohttp_graphql import GraphQLView
+from graphql.execution.executors.asyncio import AsyncioExecutor
 
 from .bd import pg_context
 from schools.schema import schema
@@ -74,7 +75,7 @@ async def create_app(config=None):
     app = web.Application()
     app['config'] = config
     app.cleanup_ctx.append(pg_context)
-    GraphQLView.attach(app, schema=schema, graphiql=True)
+    GraphQLView.attach(app, schema=schema, graphiql=True, executor=AsyncioExecutor())
     
 
     return app
